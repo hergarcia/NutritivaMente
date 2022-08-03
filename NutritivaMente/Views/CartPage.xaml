@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NutritivaMente.Views.CartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:NutritivaMente.Templates"
+    xmlns:utils="clr-namespace:NutritivaMente.Utils"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Carrito"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource PageBackgroudColor}"
+    ControlTemplate="{StaticResource BackArrowNavBarTemplate}"
+    NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,Auto">
+            <CollectionView ItemsSource="{Binding CartData.CartItems}">
+                <CollectionView.EmptyView>
+                    <Grid
+                        Padding="20"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label HorizontalTextAlignment="Center" Text="No hay productos en el carrito" />
+                            <Button
+                                Grid.Row="1"
+                                Margin="0,20,0,20"
+                                Padding="20,0,20,0"
+                                BackgroundColor="{StaticResource BackgroundDarkColor}"
+                                Command="{Binding NavigateToProductsCommand}"
+                                ContentLayout="Left,60"
+                                CornerRadius="15"
+                                HorizontalOptions="Center"
+                                Text="Ver productos"
+                                TextColor="White"
+                                VerticalOptions="End">
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="FontAwesomeSolid"
+                                        Glyph="{x:Static utils:FontAwesomeIcons.Avocado}"
+                                        Size="Medium"
+                                        Color="{DynamicResource AccentColor}" />
+                                </Button.ImageSource>
+                            </Button>
+                        </StackLayout>
+                    </Grid>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:CartItemTemplate />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--  PRECIO / AGREGAR AL CARRITO  -->
+
+            <Grid Grid.Row="1" VerticalOptions="EndAndExpand">
+                <BoxView
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="{StaticResource BackgroundDarkColor}"
+                    CornerRadius="35,35,0,0"
+                    HeightRequest="100"
+                    VerticalOptions="Center" />
+                <StackLayout
+                    Margin="20,0,0,20"
+                    Padding="20,0,20,0"
+                    HorizontalOptions="Start"
+                    Spacing="2"
+                    VerticalOptions="Center">
+                    <Label
+                        FontSize="12"
+                        HorizontalTextAlignment="Start"
+                        Text="Precio"
+                        TextColor="Gray"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding TotalToPay, StringFormat='{0:C2}'}"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <Button
+                    Grid.Column="1"
+                    Margin="0,0,20,20"
+                    Padding="15,0,15,0"
+                    BackgroundColor="{StaticResource AccentColor}"
+                    Command="{Binding ContinueToPurchaseCommand}"
+                    ContentLayout="Left,20"
+                    CornerRadius="250"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    HeightRequest="40"
+                    Text="Continuar compra"
+                    TextColor="{StaticResource BackgroundDarkColor}"
+                    TextTransform="None"
+                    VerticalOptions="Center">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="FontAwesomeSolid"
+                            Glyph="{x:Static utils:FontAwesomeIcons.Purchase}"
+                            Size="Small"
+                            Color="{StaticResource BackgroundDarkColor}" />
+                    </Button.ImageSource>
+                </Button>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

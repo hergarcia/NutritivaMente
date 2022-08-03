@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NutritivaMente.Templates.CartItemTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NutritivaMente.ViewModels"
+    xmlns:utils="clr-namespace:NutritivaMente.Utils">
+    <ContentView.Content>
+        <Frame
+            Margin="10"
+            Padding="15"
+            BackgroundColor="White"
+            CornerRadius="15"
+            HasShadow="False"
+            HeightRequest="100">
+            <Grid
+                ColumnDefinitions="2*,*"
+                RowDefinitions="*,*,*"
+                RowSpacing="0">
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="{Binding Product.Name}"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding SelectedPrice.Name, StringFormat='({0})'}"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <Frame
+                    Grid.RowSpan="3"
+                    Grid.Column="1"
+                    Padding="0"
+                    CornerRadius="15">
+                    <Grid>
+                        <Image Aspect="AspectFill" Source="{Binding Product.Photo}" />
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartPageViewModel}}, Path=DeleteItemFromCartCommand}"
+                                CommandParameter="{Binding .}"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="FontAwesomeRegular"
+                                        Glyph="{x:Static utils:FontAwesomeIcons.TrashXMark}"
+                                        Color="White" />
+                                </ImageButton.Source>
+                            </ImageButton>
+                            <Label Text="Eliminar" TextColor="White" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    Text="{Binding SelectedPrice.Price, StringFormat='{0:C}'}}"
+                    TextColor="{StaticResource AccentColor}" />
+                <Grid Grid.Row="2" ColumnDefinitions="Auto,50,Auto">
+                    <ImageButton
+                        Padding="8"
+                        BackgroundColor="{StaticResource PageBackgroudColor}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartPageViewModel}}, Path=MinusOneItemCommand}"
+                        CommandParameter="{Binding .}"
+                        CornerRadius="10"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesomeRegular"
+                                Glyph="{x:Static utils:FontAwesomeIcons.MinusSymbol}"
+                                Color="{DynamicResource BaseLightTextColor}" />
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Quantity}"
+                        VerticalTextAlignment="Center" />
+                    <ImageButton
+                        Grid.Column="2"
+                        Padding="8"
+                        BackgroundColor="{StaticResource PageBackgroudColor}"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartPageViewModel}}, Path=PlusOneItemCommand}"
+                        CommandParameter="{Binding .}"
+                        CornerRadius="10"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesomeRegular"
+                                Glyph="{x:Static utils:FontAwesomeIcons.PlusSymbol}"
+                                Color="{DynamicResource BaseLightTextColor}" />
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

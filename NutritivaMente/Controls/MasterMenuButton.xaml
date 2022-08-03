@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NutritivaMente.Controls.MasterMenuButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Root">
+    <ContentView.Content>
+        <Button
+            Margin="10"
+            Padding="20,0,20,0"
+            BackgroundColor="{StaticResource AccentColor}"
+            Command="{Binding NavigateCommand, Source={x:Reference Root}}"
+            ContentLayout="Left,10"
+            CornerRadius="15"
+            FontAttributes="Bold"
+            Text="{Binding Text, Source={x:Reference Root}}"
+            TextColor="{DynamicResource BackgroundDarkColor}">
+            <Button.ImageSource>
+                <FontImageSource
+                    FontFamily="{Binding FontAwesomeFamily, Source={x:Reference Root}}"
+                    Glyph="{Binding Icon, Source={x:Reference Root}}"
+                    Size="Medium"
+                    Color="{DynamicResource BackgroundDarkColor}" />
+            </Button.ImageSource>
+        </Button>
+    </ContentView.Content>
+</ContentView>

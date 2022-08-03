@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NutritivaMente.Templates.ProductItemTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentView.Content>
+
+        <Frame
+            Padding="0"
+            BackgroundColor="{Binding FrameColor}"
+            CornerRadius="20"
+            HasShadow="False"
+            HeightRequest="170">
+            <Grid RowDefinitions="50,*" RowSpacing="0">
+                <Label
+                    FontAttributes="Bold"
+                    Text="{Binding Name}"
+                    TranslationX="20"
+                    VerticalTextAlignment="Center" />
+                <Image
+                    Grid.Row="1"
+                    Aspect="AspectFill"
+                    Source="{Binding Photo}" />
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
