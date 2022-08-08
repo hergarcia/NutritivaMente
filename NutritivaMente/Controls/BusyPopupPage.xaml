@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="NutritivaMente.Controls.BusyPopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="http://rotorgames.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    CloseWhenBackgroundIsClicked="False">
+    <ContentPage.Content>
+        <Frame
+            xct:ShadowEffect.Color="Black"
+            xct:ShadowEffect.Radius="20"
+            BackgroundColor="{StaticResource BackgroundDarkColor}"
+            CornerRadius="15"
+            HasShadow="False"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="100">
+            <StackLayout VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" Color="{StaticResource AccentColor}" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Cargando..."
+                    TextColor="{StaticResource AccentColor}" />
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</pages:PopupPage>

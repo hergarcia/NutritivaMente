@@ -1,5 +1,7 @@
-﻿using NutritivaMente.Helpers;
+﻿using Newtonsoft.Json;
+using NutritivaMente.Helpers;
 using NutritivaMente.Model;
+using NutritivaMente.Services.Database;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -8,13 +10,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace NutritivaMente.ViewModels
 {
     public class ProductPageViewModel : ViewModelBase
     {
+        private readonly UsersService usersService = new UsersService();
+        private readonly OrdersService ordersService = new OrdersService();
         private List<Product> _products;
+
 
         public ProductPageViewModel(INavigationService navigationService, IEventAggregator ea)
             : base(navigationService, ea)
@@ -22,7 +28,6 @@ namespace NutritivaMente.ViewModels
             ProductSelectNavigateCommand = new Command(OnProductSelectNavigate);
 
             LoadProducts();
-            
         }
 
         public ICommand ProductSelectNavigateCommand { get; }
@@ -159,6 +164,8 @@ namespace NutritivaMente.ViewModels
                 }
             };
         }
+
+
     }
 }
 

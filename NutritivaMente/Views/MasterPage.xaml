@@ -5,12 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:NutritivaMente.Controls"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:NutritivaMente.Templates"
     xmlns:utils="clr-namespace:NutritivaMente.Utils"
     xmlns:views="clr-namespace:NutritivaMente.Views"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource PageBackgroudColor}"
     IsPresented="{Binding IsMasterMenuPresented, Mode=TwoWay}"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="True">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" BackgroundColor="{StaticResource BackgroundDarkColor}">
@@ -29,34 +30,54 @@
                     Grid.Row="1"
                     Orientation="Vertical"
                     Spacing="10">
-                    <!--<controls:MasterMenuButton
-                        FontAwesomeFamily="FontAwesomeSolid"
-                        Icon="{x:Static utils:FontAwesomeIcons.Home}"
-                        NavigateCommand="{Binding NavigateToMainPageCommand}"
-                        Text="Inicio" />-->
+
                     <controls:MasterMenuButton
                         FontAwesomeFamily="FontAwesomeSolid"
                         Icon="{x:Static utils:FontAwesomeIcons.Avocado}"
                         NavigateCommand="{Binding NavigateToProductPageCommand}"
                         Text="Productos" />
+
+                    <controls:MasterMenuButton
+                        FontAwesomeFamily="FontAwesomeSolid"
+                        Icon="{x:Static utils:FontAwesomeIcons.Parachute}"
+                        NavigateCommand="{Binding NavigateTosubscriptionsPageCommand}"
+                        Text="Suscripciones" />
+
+                    <controls:MasterMenuButton
+                        FontAwesomeFamily="FontAwesomeSolid"
+                        Icon="{x:Static utils:FontAwesomeIcons.List}"
+                        NavigateCommand="{Binding NavigateToMyOrdersPageCommand}"
+                        Text="Mis pedidos" />
+
+
                     <Grid ColumnDefinitions="*,*,*">
 
                         <controls:MasterMenuButton
                             FontAwesomeFamily="FontAwesomeBrands"
                             Icon="{x:Static utils:FontAwesomeIcons.Instagram}"
                             NavigateCommand="{Binding OpenInstagramCommand}" />
+
                         <controls:MasterMenuButton
                             Grid.Column="1"
                             FontAwesomeFamily="FontAwesomeBrands"
                             Icon="{x:Static utils:FontAwesomeIcons.Whatsapp}"
                             NavigateCommand="{Binding SendWhatsAppCommand}" />
+
                         <controls:MasterMenuButton
                             Grid.Column="2"
                             FontAwesomeFamily="FontAwesomeLight"
                             Icon="{x:Static utils:FontAwesomeIcons.Phone}"
                             NavigateCommand="{Binding OpenPhoneCallCommand}" />
                     </Grid>
+
+                    <controls:MasterMenuButton
+                        FontAwesomeFamily="FontAwesomeSolid"
+                        Icon="{x:Static utils:FontAwesomeIcons.List}"
+                        NavigateCommand="{Binding NavigateToMyAccountPageCommand}"
+                        Text="Mi cuenta" />
+
                 </StackLayout>
+
             </Grid>
         </ContentPage>
     </MasterDetailPage.Master>
@@ -64,7 +85,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <views:ProductPage />
+                <views:ProductPage Padding="0" />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

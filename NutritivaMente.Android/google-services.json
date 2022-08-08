@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "188347152732",
+    "project_id": "nutritivamente-2f7d6",
+    "storage_bucket": "nutritivamente-2f7d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188347152732:android:f04618fe190599d2ba2999",
+        "android_client_info": {
+          "package_name": "com.hergarcia.nutritivamente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188347152732-pcsb0arb8jrmtlml5drsmohkajmedojp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hergarcia.nutritivamente",
+            "certificate_hash": "02a8c90222b3d21e256592967be995d63630b170"
+          }
+        },
+        {
+          "client_id": "188347152732-ed2c3j3tecudi381b8mtmoiq2nno4pst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuXr9f6LyL-FiD5br3alc7K7SlaE4hy4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188347152732-ed2c3j3tecudi381b8mtmoiq2nno4pst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

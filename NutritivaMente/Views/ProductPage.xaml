@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<views:NavigationBarMenuTemplatePage
     x:Class="NutritivaMente.Views.ProductPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
     xmlns:templates="clr-namespace:NutritivaMente.Templates"
+    xmlns:views="clr-namespace:NutritivaMente.Views"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="Root"
     Title="Productos"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="{StaticResource PageBackgroudColor}"
-    ControlTemplate="{StaticResource MasterDetailNavBarTemplate}"
-    NavigationPage.HasNavigationBar="False">
+    BackgroundColor="{StaticResource PageBackgroudColor}">
 
     <ContentPage.Content>
         <CollectionView
@@ -34,4 +33,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </ContentPage.Content>
-</ContentPage>
+</views:NavigationBarMenuTemplatePage>

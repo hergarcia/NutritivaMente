@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:NavigationBarMenuTemplatePage
+    x:Class="NutritivaMente.Views.MyAccountPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NutritivaMente.Controls"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:viewmodels="clr-namespace:NutritivaMente.ViewModels"
+    xmlns:views="clr-namespace:NutritivaMente.Views"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource PageBackgroudColor}">
+
+
+
+    <Grid>
+        <!--<Grid>
+            <xct:TabView>
+                <xct:TabViewItem Text="Ingresar">
+                    <Grid>
+                        <StackLayout>
+                            <Entry Placeholder="Email" />
+                            <Entry Placeholder="Contraseña" />
+                            <Button Text="Ingresar" />
+                            <Button Text="Continuar con Google" />
+                        </StackLayout>
+                    </Grid>
+                </xct:TabViewItem>
+                <xct:TabViewItem Text="Registrarse">
+                    <StackLayout>
+                        <Entry Placeholder="Email" />
+                        <Entry Placeholder="Contraseña" />
+                        <Entry Placeholder="Repetir Contraseña" />
+                        <Button Text="Registrarse" />
+                    </StackLayout>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </Grid>-->
+
+        <Grid Padding="10">
+            <StackLayout>
+
+                <controls:AccountDataFrames FieldText="{Binding UserName, Mode=TwoWay}"
+                    AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
+                    ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
+                    EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    LabelText="Nombre" />
+
+                <controls:AccountDataFrames FieldText="{Binding UserEmail, Mode=TwoWay}"
+                    AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
+                    ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
+                    EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    LabelText="Email" />
+
+                <controls:AccountDataFramesEditor FieldText="{Binding UserAddress, Mode=TwoWay}"
+                    AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
+                    ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
+                    EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    LabelText="Dirección" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</views:NavigationBarMenuTemplatePage>

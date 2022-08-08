@@ -19,5 +19,8 @@ namespace NutritivaMente.Utils
         public const string PlusSymbol = "\u002b";
         public const string MinusSymbol = "\uf068";
         public const string Purchase = "\uf290";
+        public const string Parachute = "\uf4cd";
+        public const string List = "\ue1d0";
+        public const string Edit = "\uf305";
     }
 }

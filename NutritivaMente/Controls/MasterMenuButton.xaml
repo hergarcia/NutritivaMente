@@ -11,7 +11,7 @@
             BackgroundColor="{StaticResource AccentColor}"
             Command="{Binding NavigateCommand, Source={x:Reference Root}}"
             ContentLayout="Left,10"
-            CornerRadius="15"
+            CornerRadius="250"
             FontAttributes="Bold"
             Text="{Binding Text, Source={x:Reference Root}}"
             TextColor="{DynamicResource BackgroundDarkColor}">

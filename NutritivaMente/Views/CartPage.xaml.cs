@@ -2,7 +2,7 @@
 
 namespace NutritivaMente.Views
 {
-    public partial class CartPage : ContentPage
+    public partial class CartPage 
     {
         public CartPage()
         {

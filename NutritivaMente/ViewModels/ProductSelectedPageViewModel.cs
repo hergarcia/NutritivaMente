@@ -6,6 +6,7 @@ using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using Android.Widget;
+using System.Threading.Tasks;
 
 namespace NutritivaMente.ViewModels
 {
@@ -19,7 +20,7 @@ namespace NutritivaMente.ViewModels
         public ProductSelectedPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            AddToCartCommand = new Command(OnAddToCart);
+            AddToCartCommand = new Command(async () => await RunSecure(OnAddToCart));
             MinusOneQuantityCommand = new Command(MinusOneQuantity);
             PlusOneQuantityCommand = new Command(PlusOneQuantity);
         }
@@ -72,7 +73,7 @@ namespace NutritivaMente.ViewModels
         }
 
 
-        private async void OnAddToCart()
+        private async Task OnAddToCart()
         {
             if (SelectedProduct is ProductPrice productPrice)
             {
@@ -150,9 +151,7 @@ namespace NutritivaMente.ViewModels
 
         private void GetPrice()
         {
-            var selectedProduct = SelectedProduct as ProductPrice;
-
-            if (selectedProduct != null)
+            if (SelectedProduct is ProductPrice selectedProduct)
             {
                 Price = Quantity * selectedProduct.Price;
             }

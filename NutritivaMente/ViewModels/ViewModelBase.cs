@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
+using NutritivaMente.Controls;
+using NutritivaMente.Helpers;
 using NutritivaMente.Model;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -115,6 +118,19 @@ namespace NutritivaMente.ViewModels
             }
         }
 
+        public async Task RunSecure(Func<Task> task)
+        {
+            await PopupNavigation.Instance.PushAsync(new BusyPopupPage());
+
+            try
+            {
+                await task();
+            }
+            finally
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+        }
 
     }
 }

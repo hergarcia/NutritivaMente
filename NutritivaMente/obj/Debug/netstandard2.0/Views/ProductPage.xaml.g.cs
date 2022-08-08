@@ -14,15 +14,15 @@ namespace NutritivaMente.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\ProductPage.xaml")]
-    public partial class ProductPage : global::Xamarin.Forms.ContentPage {
+    public partial class ProductPage : global::NutritivaMente.Views.NavigationBarMenuTemplatePage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.ContentPage Root;
+        private global::NutritivaMente.Views.NavigationBarMenuTemplatePage Root;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ProductPage));
-            Root = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ContentPage>(this, "Root");
+            Root = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::NutritivaMente.Views.NavigationBarMenuTemplatePage>(this, "Root");
         }
     }
 }

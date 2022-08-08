@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.hergarcia.nutritivamente" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
-	<application android:label="NutritivaMente" android:icon="@drawable/nutritivamentelogo"></application>
+	<application android:label="NutritivaMente" android:icon="@drawable/NutritivaMenteLogo"></application>
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

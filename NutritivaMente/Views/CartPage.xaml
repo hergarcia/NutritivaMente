@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<views:NavigationBarBackTemplatePage
     x:Class="NutritivaMente.Views.CartPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
     xmlns:templates="clr-namespace:NutritivaMente.Templates"
     xmlns:utils="clr-namespace:NutritivaMente.Utils"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:views="clr-namespace:NutritivaMente.Views"
     Title="Carrito"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="{StaticResource PageBackgroudColor}"
-    ControlTemplate="{StaticResource BackArrowNavBarTemplate}"
-    NavigationPage.HasNavigationBar="False">
-
+    BackgroundColor="{StaticResource PageBackgroudColor}">
 
     <ContentPage.Content>
         <Grid RowDefinitions="*,Auto">
@@ -27,14 +24,9 @@
                             <Button
                                 Grid.Row="1"
                                 Margin="0,20,0,20"
-                                Padding="20,0,20,0"
-                                BackgroundColor="{StaticResource BackgroundDarkColor}"
                                 Command="{Binding NavigateToProductsCommand}"
-                                ContentLayout="Left,60"
-                                CornerRadius="15"
-                                HorizontalOptions="Center"
+                                Style="{StaticResource ButtonWithLightBackgroundStyle}"
                                 Text="Ver productos"
-                                TextColor="White"
                                 VerticalOptions="End">
                                 <Button.ImageSource>
                                     <FontImageSource
@@ -87,17 +79,9 @@
                 <Button
                     Grid.Column="1"
                     Margin="0,0,20,20"
-                    Padding="15,0,15,0"
-                    BackgroundColor="{StaticResource AccentColor}"
                     Command="{Binding ContinueToPurchaseCommand}"
-                    ContentLayout="Left,20"
-                    CornerRadius="250"
-                    FontAttributes="Bold"
-                    FontSize="13"
-                    HeightRequest="40"
+                    Style="{StaticResource ButtonWithDarkBackgroundStyle}"
                     Text="Continuar compra"
-                    TextColor="{StaticResource BackgroundDarkColor}"
-                    TextTransform="None"
                     VerticalOptions="Center">
                     <Button.ImageSource>
                         <FontImageSource
@@ -110,4 +94,4 @@
             </Grid>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</views:NavigationBarBackTemplatePage>

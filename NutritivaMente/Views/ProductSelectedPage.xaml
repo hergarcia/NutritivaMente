@@ -1,20 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<views:NavigationBarBackTemplatePage
     x:Class="NutritivaMente.Views.ProductSelectedPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
     xmlns:templates="clr-namespace:NutritivaMente.Templates"
     xmlns:utils="clr-namespace:NutritivaMente.Utils"
+    xmlns:views="clr-namespace:NutritivaMente.Views"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     Title="{Binding Product.Name}"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="{StaticResource PageBackgroudColor}"
-    ControlTemplate="{StaticResource BackArrowNavBarTemplate}"
-    NavigationPage.HasNavigationBar="False">
-
+    BackgroundColor="{StaticResource PageBackgroudColor}">
     <ContentPage.Content>
-
 
         <Grid RowDefinitions="*,Auto,Auto,Auto" RowSpacing="10">
 
@@ -111,15 +108,15 @@
                                 <Grid>
                                     <Frame
                                         x:Name="_frame"
-                                        Padding="1.5"
+                                        Padding="0"
                                         BackgroundColor="White"
                                         CornerRadius="16"
                                         HasShadow="False"
-                                        HeightRequest="70"
+                                        HeightRequest="80"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center"
-                                        WidthRequest="70">
-                                        <templates:PricesListItemTemplate />
+                                        WidthRequest="80">
+                                        <templates:PricesListItemTemplate Margin="2" />
                                     </Frame>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup Name="CommonStates">
@@ -237,17 +234,9 @@
                 <Button
                     Grid.Column="1"
                     Margin="0,0,20,20"
-                    Padding="15,0,15,0"
-                    BackgroundColor="{StaticResource AccentColor}"
                     Command="{Binding AddToCartCommand}"
-                    ContentLayout="Left,20"
-                    CornerRadius="250"
-                    FontAttributes="Bold"
-                    FontSize="13"
-                    HeightRequest="40"
+                    Style="{StaticResource ButtonWithDarkBackgroundStyle}"
                     Text="Agregar al carrito"
-                    TextColor="{StaticResource BackgroundDarkColor}"
-                    TextTransform="None"
                     VerticalOptions="Center">
                     <Button.ImageSource>
                         <FontImageSource
@@ -260,4 +249,4 @@
             </Grid>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</views:NavigationBarBackTemplatePage>

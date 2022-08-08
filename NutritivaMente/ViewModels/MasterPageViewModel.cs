@@ -1,4 +1,7 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using NutritivaMente.Helpers;
+using NutritivaMente.Model;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -17,6 +20,7 @@ namespace NutritivaMente.ViewModels
     {
         private bool _isMasterMenuPresented;
 
+
         public MasterPageViewModel(INavigationService navigationService, IEventAggregator ea)
             : base(navigationService)
         {
@@ -26,12 +30,18 @@ namespace NutritivaMente.ViewModels
             SendWhatsAppCommand = new Command(SendWhatsApp);
             OpenInstagramCommand = new Command(OpenInstagram);
             OpenPhoneCallCommand = new Command(OpenPhoneCall);
+            NavigateToSubscriptionsPageCommand = new Command(NavigateToSubscriptionsPage);
+            NavigateToMyOrdersPageCommand = new Command(NavigateToMyOrdersPage);
+            NavigateToMyAccountPageCommand = new Command(NavigateToMyAccountPage);
         }
 
         public ICommand NavigateToProductPageCommand { get; }
         public ICommand SendWhatsAppCommand { get; }
         public ICommand OpenInstagramCommand { get; }
         public ICommand OpenPhoneCallCommand { get; }
+        public ICommand NavigateToSubscriptionsPageCommand { get; }
+        public ICommand NavigateToMyOrdersPageCommand { get; }
+        public ICommand NavigateToMyAccountPageCommand { get; }
 
 
         public bool IsMasterMenuPresented
@@ -40,14 +50,28 @@ namespace NutritivaMente.ViewModels
             set { SetProperty(ref _isMasterMenuPresented, value); }
         }
 
+        private void OpenMasterMenu(bool obj)
+        {
+            IsMasterMenuPresented = obj;
+        }
+
         private async void NavigateToProductPage()
         {
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(ProductPageViewModel)}");
         }
 
-        private void OpenMasterMenu(bool obj)
+        private async void NavigateToSubscriptionsPage()
         {
-            IsMasterMenuPresented = obj;
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(SubscriptionPageViewModel)}");
+        }
+
+        private async void NavigateToMyOrdersPage()
+        {
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(MyOrderdsPageViewModel)}");
+        }        
+        private async void NavigateToMyAccountPage()
+        {
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(MyAccountPageViewModel)}");
         }
 
         private async void OpenPhoneCall()
@@ -90,5 +114,7 @@ namespace NutritivaMente.ViewModels
                 await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
             }
         }
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace NutritivaMente.Views {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\ProductSelectedPage.xaml")]
-    public partial class ProductSelectedPage : global::Xamarin.Forms.ContentPage {
+    public partial class ProductSelectedPage : global::NutritivaMente.Views.NavigationBarBackTemplatePage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {

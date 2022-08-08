@@ -19,7 +19,7 @@ namespace NutritivaMente
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"/{nameof(MasterPageViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+            await NavigationService.NavigateAsync(nameof(FakeSplashPageViewModel));
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -31,6 +31,12 @@ namespace NutritivaMente
             containerRegistry.RegisterForNavigation<ProductPage, ProductPageViewModel>(nameof(ProductPageViewModel));
             containerRegistry.RegisterForNavigation<ProductSelectedPage, ProductSelectedPageViewModel>(nameof(ProductSelectedPageViewModel));
             containerRegistry.RegisterForNavigation<CartPage, CartPageViewModel>(nameof(CartPageViewModel));
+            containerRegistry.RegisterForNavigation<SubscriptionPage, SubscriptionPageViewModel>(nameof(SubscriptionPageViewModel));
+            containerRegistry.RegisterForNavigation<MyOrderdsPage, MyOrderdsPageViewModel>(nameof(MyOrderdsPageViewModel));
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>(nameof(LoginPageViewModel));
+            containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>(nameof(SignUpPageViewModel));
+            containerRegistry.RegisterForNavigation<FakeSplashPage, FakeSplashPageViewModel>(nameof(FakeSplashPageViewModel));
+            containerRegistry.RegisterForNavigation<MyAccountPage, MyAccountPageViewModel>(nameof(MyAccountPageViewModel));
         }
     }
 }

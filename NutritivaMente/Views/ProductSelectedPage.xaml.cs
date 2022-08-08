@@ -2,7 +2,7 @@
 
 namespace NutritivaMente.Views
 {
-    public partial class ProductSelectedPage : ContentPage
+    public partial class ProductSelectedPage 
     {
         public ProductSelectedPage()
         {

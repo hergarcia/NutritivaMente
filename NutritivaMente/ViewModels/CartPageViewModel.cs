@@ -1,6 +1,8 @@
 ﻿using Android.Widget;
 using Newtonsoft.Json;
 using NutritivaMente.Model;
+using NutritivaMente.Services.Database;
+using Plugin.CloudFirestore;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -18,6 +20,8 @@ namespace NutritivaMente.ViewModels
 
     public class CartPageViewModel : ViewModelBase
     {
+        private readonly OrdersService ordersService = new OrdersService();
+        private readonly UsersService usersService = new UsersService();
         private CartData _cartData;
         private double _totalToPay;
 
@@ -137,28 +141,53 @@ namespace NutritivaMente.ViewModels
 
         private async void ContinueToPurchase()
         {
-            if(CartData == null)
-            {
-                Toast.MakeText(Android.App.Application.Context, "No hay productos en el carrito", ToastLength.Short).Show();
-                return;
-            }
+            //if(CartData == null)
+            //{
+            //    Toast.MakeText(Android.App.Application.Context, "No hay productos en el carrito", ToastLength.Short).Show();
+            //    return;
+            //}
 
-            if (CartData.CartItems.Count == 0)
-            {
-                Toast.MakeText(Android.App.Application.Context, "No hay productos en el carrito", ToastLength.Short).Show();
-                return;
-            }
+            //if (CartData.CartItems.Count == 0)
+            //{
+            //    Toast.MakeText(Android.App.Application.Context, "No hay productos en el carrito", ToastLength.Short).Show();
+            //    return;
+            //}
 
-            var message = "Hola, te quiero mucho <3";
+            //var message = "Hola, te quiero mucho <3";
 
-            try
+            //try
+            //{
+            //    Chat.Open("+59898262412", message);
+            //}
+            //catch (Exception ex)
+            //{
+            //    await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+            //}
+
+            var user = JsonConvert.DeserializeObject<User>(Preferences.Get("LogedUser", ""));
+            var newOrder = new Order
             {
-                Chat.Open("+59898262412", message);
-            }
-            catch (Exception ex)
+                UserId = user.UserId,
+                CartData = CartData,
+                PricePayed = TotalToPay,
+                IsDelivered = false,
+            };
+
+            var orderId = await ordersService.AddOrderAsync(newOrder);
+
+            var userOrder = new Order
             {
-                await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
-            }
+                OrderId = orderId,
+                UserId = user.UserId,
+                CartData = CartData,
+                PricePayed = TotalToPay,
+                IsDelivered = false,
+            };
+
+            user.OrderHistory.Add(userOrder);
+            Preferences.Set("LogedUser", JsonConvert.SerializeObject(user));
+            await usersService.UpdateUserAsync(user);
+
         }
     }
 }

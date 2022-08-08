@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NutritivaMente.Controls.AccountDataFrames"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NutritivaMente.Controls"
+    xmlns:viewmodels="clr-namespace:NutritivaMente.ViewModels"
+    x:Name="Root">
+
+
+
+    <ContentView.Content>
+        <Grid Padding="20" RowDefinitions="Auto,*">
+            <Label
+                Margin="20,0,20,0"
+                FontAttributes="Bold"
+                Text="{Binding LabelText, Source={x:Reference Root}}" />
+            <Frame
+                Grid.Row="1"
+                Padding="5"
+                BackgroundColor="{Binding BackgroundColor, Source={x:Reference Root}}"
+                BorderColor="{DynamicResource AccentColor}"
+                CornerRadius="250"
+                HasShadow="False">
+                <Grid ColumnDefinitions="*,1,70">
+                    <controls:EntryWithoutLine
+                        Margin="20,0,20,0"
+                        FontSize="15"
+                        IsReadOnly="{Binding IsReadOnly, Source={x:Reference Root}}"
+                        Text="{Binding FieldText, Source={x:Reference Root}}"
+                        TextColor="{Binding TextColor, Source={x:Reference Root}}" />
+                    <BoxView
+                        Grid.Column="1"
+                        BackgroundColor="{DynamicResource AccentColor}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="CenterAndExpand" />
+                    <Button
+                        Grid.Column="2"
+                        BackgroundColor="Transparent"
+                        Command="{Binding EditButtonPressedCommand, Source={x:Reference Root}}"
+                        CommandParameter="{Binding ControlCommandParameter, Source={x:Reference Root}}"
+                        FontSize="12"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding IsEditButtonVisible, Source={x:Reference Root}}"
+                        Text="Editar"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <Button
+                        Grid.Column="2"
+                        BackgroundColor="Transparent"
+                        Command="{Binding AcceptButtonPressedCommand, Source={x:Reference Root}}"
+                        CommandParameter="{Binding ControlCommandParameter, Source={x:Reference Root}}"
+                        FontSize="10"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding IsAcceptButtonVisible, Source={x:Reference Root}}"
+                        Text="Aceptar"
+                        TextColor="{DynamicResource AccentColor}"
+                        VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </Frame>
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>
