@@ -1,14 +1,7 @@
-﻿using Newtonsoft.Json;
-using NutritivaMente.Helpers;
-using NutritivaMente.Model;
-using Prism.Commands;
+﻿using NutritivaMente.Helpers;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -69,6 +62,7 @@ namespace NutritivaMente.ViewModels
         {
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(MyOrderdsPageViewModel)}");
         }        
+
         private async void NavigateToMyAccountPage()
         {
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(MyAccountPageViewModel)}");

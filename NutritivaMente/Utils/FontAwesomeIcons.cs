@@ -22,5 +22,6 @@ namespace NutritivaMente.Utils
         public const string Parachute = "\uf4cd";
         public const string List = "\ue1d0";
         public const string Edit = "\uf305";
+        public const string User = "\uf007";
     }
 }

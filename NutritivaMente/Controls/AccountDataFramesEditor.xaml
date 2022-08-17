@@ -29,7 +29,8 @@
                         FontSize="15"
                         IsReadOnly="{Binding IsReadOnly, Source={x:Reference Root}}"
                         Text="{Binding FieldText, Source={x:Reference Root}}"
-                        TextColor="{Binding TextColor, Source={x:Reference Root}}" />
+                        TextColor="{Binding TextColor, Source={x:Reference Root}}"
+                        VerticalOptions="Center" />
                     <BoxView
                         Grid.Column="1"
                         BackgroundColor="{DynamicResource AccentColor}"

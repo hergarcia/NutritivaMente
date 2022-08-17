@@ -106,7 +106,7 @@ namespace NutritivaMente.ViewModels
                         if (item.Product.Name.Equals(cartProduct.Product.Name) && item.SelectedPrice.Price.Equals(cartProduct.SelectedPrice.Price))
                         {
                             isItemInCart = true;
-                            item.Quantity += 1;
+                            item.Quantity += Quantity;
                             break;
                         }
                     }

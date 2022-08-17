@@ -19,7 +19,7 @@ namespace NutritivaMente
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync(nameof(FakeSplashPageViewModel));
+            await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -27,15 +27,13 @@ namespace NutritivaMente
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MasterPage, MasterPageViewModel>(nameof(MasterPageViewModel));
+            containerRegistry.RegisterForNavigation<RootMasterDetailPage, RootMasterDetailViewModel>(nameof(RootMasterDetailViewModel));
+            containerRegistry.RegisterForNavigation<FakeSplashPage, FakeSplashPageViewModel>(nameof(FakeSplashPageViewModel));
             containerRegistry.RegisterForNavigation<ProductPage, ProductPageViewModel>(nameof(ProductPageViewModel));
             containerRegistry.RegisterForNavigation<ProductSelectedPage, ProductSelectedPageViewModel>(nameof(ProductSelectedPageViewModel));
             containerRegistry.RegisterForNavigation<CartPage, CartPageViewModel>(nameof(CartPageViewModel));
             containerRegistry.RegisterForNavigation<SubscriptionPage, SubscriptionPageViewModel>(nameof(SubscriptionPageViewModel));
             containerRegistry.RegisterForNavigation<MyOrderdsPage, MyOrderdsPageViewModel>(nameof(MyOrderdsPageViewModel));
-            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>(nameof(LoginPageViewModel));
-            containerRegistry.RegisterForNavigation<SignUpPage, SignUpPageViewModel>(nameof(SignUpPageViewModel));
-            containerRegistry.RegisterForNavigation<FakeSplashPage, FakeSplashPageViewModel>(nameof(FakeSplashPageViewModel));
             containerRegistry.RegisterForNavigation<MyAccountPage, MyAccountPageViewModel>(nameof(MyAccountPageViewModel));
         }
     }

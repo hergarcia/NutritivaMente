@@ -32,7 +32,7 @@ namespace NutritivaMente.ViewModels
             PlusOneItemCommand = new Command(PlusOneItem);
             MinusOneItemCommand = new Command(MinusOneItem);
             NavigateToProductsCommand = new Command(NavigateToProducts);
-            ContinueToPurchaseCommand = new Command(ContinueToPurchase);
+            ContinueToPurchaseCommand = new Command(async()=>await RunSecure(ContinueToPurchase));
         }
 
         public ICommand DeleteItemFromCartCommand { get; }
@@ -136,10 +136,10 @@ namespace NutritivaMente.ViewModels
 
         private async void NavigateToProducts()
         {
-            await NavigationService.NavigateAsync($"/{nameof(MasterPageViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+            await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
         }
 
-        private async void ContinueToPurchase()
+        private async Task ContinueToPurchase()
         {
             //if(CartData == null)
             //{
@@ -164,12 +164,13 @@ namespace NutritivaMente.ViewModels
             //    await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
             //}
 
-            var user = JsonConvert.DeserializeObject<User>(Preferences.Get("LogedUser", ""));
+            var user = JsonConvert.DeserializeObject<User>(Preferences.Get("LoggedUser", ""));
             var newOrder = new Order
             {
                 UserId = user.UserId,
                 CartData = CartData,
                 PricePayed = TotalToPay,
+                OrderDate = DateTime.Now,
                 IsDelivered = false,
             };
 
@@ -181,12 +182,16 @@ namespace NutritivaMente.ViewModels
                 UserId = user.UserId,
                 CartData = CartData,
                 PricePayed = TotalToPay,
+                OrderDate = DateTime.Now,
                 IsDelivered = false,
             };
 
             user.OrderHistory.Add(userOrder);
-            Preferences.Set("LogedUser", JsonConvert.SerializeObject(user));
+            Preferences.Set("LoggedUser", JsonConvert.SerializeObject(user));
+            Preferences.Remove("CartData");
             await usersService.UpdateUserAsync(user);
+            await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+            Toast.MakeText(Android.App.Application.Context, "Pedido enviado", ToastLength.Short).Show();
 
         }
     }

@@ -5,57 +5,149 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:NutritivaMente.Controls"
     xmlns:prism="http://prismlibrary.com"
-    xmlns:viewmodels="clr-namespace:NutritivaMente.ViewModels"
     xmlns:views="clr-namespace:NutritivaMente.Views"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Mi Cuenta"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource PageBackgroudColor}">
 
-
-
     <Grid>
-        <!--<Grid>
-            <xct:TabView>
-                <xct:TabViewItem Text="Ingresar">
-                    <Grid>
-                        <StackLayout>
-                            <Entry Placeholder="Email" />
-                            <Entry Placeholder="Contraseña" />
-                            <Button Text="Ingresar" />
-                            <Button Text="Continuar con Google" />
+        <Grid IsVisible="{Binding ShowLoginInfo}">
+            <xct:TabView
+                SelectedIndex="0"
+                TabIndicatorHeight="100"
+                TabIndicatorPlacement="Center">
+                <xct:TabView.TabStripBackgroundView>
+                    <Grid Margin="10,0,10,0">
+                        <BoxView
+                            BackgroundColor="{StaticResource AccentColor}"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand" />
+                    </Grid>
+                </xct:TabView.TabStripBackgroundView>
+                <xct:TabView.TabIndicatorView>
+                    <Grid Margin="10,0,10,0" Padding="5">
+                        <BoxView
+                            BackgroundColor="{StaticResource PageBackgroudColor}"
+                            CornerRadius="50"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand" />
+                    </Grid>
+                </xct:TabView.TabIndicatorView>
+                <xct:TabViewItem
+                    FontAttributesSelected="Bold"
+                    Text="Ingresar"
+                    TextColor="White"
+                    TextColorSelected="{StaticResource BaseLightTextColor}">
+                    <Grid Margin="20">
+                        <StackLayout Spacing="5">
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding UserLoginEmail, Mode=TwoWay}" LabelText="Email" />
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding UserLoginPassword, Mode=TwoWay}" LabelText="Contraseña" />
+                            <Button
+                                Margin="10"
+                                Command="{Binding LoginWithEmailAndPasswordCommand}"
+                                Style="{StaticResource ButtonWithLightBackgroundStyle}"
+                                Text="Ingresar" />
+                            <Frame
+                                Margin="10"
+                                Padding="0"
+                                CornerRadius="30"
+                                HasShadow="False"
+                                HeightRequest="50"
+                                IsEnabled="False">
+                                <Grid
+                                    Padding="20,0,20,0"
+                                    xct:TouchEffect.Command="{Binding LoginWithGoogleCommand}"
+                                    xct:TouchEffect.NativeAnimation="True"
+                                    ColumnDefinitions="60,*"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Scale=".6"
+                                        Source="Google.png" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Continuar con Google"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Frame>
                         </StackLayout>
                     </Grid>
                 </xct:TabViewItem>
-                <xct:TabViewItem Text="Registrarse">
-                    <StackLayout>
-                        <Entry Placeholder="Email" />
-                        <Entry Placeholder="Contraseña" />
-                        <Entry Placeholder="Repetir Contraseña" />
-                        <Button Text="Registrarse" />
-                    </StackLayout>
+                <xct:TabViewItem
+                    FontAttributesSelected="Bold"
+                    Text="Registrarse"
+                    TextColor="White"
+                    TextColorSelected="{StaticResource BaseLightTextColor}">
+                    <Grid Margin="20">
+                        <StackLayout>
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding NewUserCompleteName, Mode=TwoWay}" LabelText="Nombre completo" />
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding NewUserLoginEmail, Mode=TwoWay}" LabelText="Email" />
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding NewUserLoginPassword, Mode=TwoWay}" LabelText="Contraseña" />
+                            <controls:LoginAndRegisterFieldsFrame FieldText="{Binding NewUserLoginPasswordRep, Mode=TwoWay}" LabelText="Repetir Contraseña" />
+                            <controls:LoginAndRegisterFieldsFrameEditor FieldText="{Binding NewUserAddress, Mode=TwoWay}" LabelText="Dirección" />
+                            <Button
+                                Margin="10"
+                                Command="{Binding CreateUserCommand}"
+                                Style="{StaticResource ButtonWithLightBackgroundStyle}"
+                                Text="Registrarse" />
+                        </StackLayout>
+                    </Grid>
                 </xct:TabViewItem>
             </xct:TabView>
-        </Grid>-->
+        </Grid>
 
-        <Grid Padding="10">
+        <Grid IsVisible="{Binding ShowUserInfo}">
             <StackLayout>
-
-                <controls:AccountDataFrames FieldText="{Binding UserName, Mode=TwoWay}"
+                <controls:AccountDataFrames
                     AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
                     ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
                     EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    FieldText="{Binding UserName, Mode=TwoWay}"
                     LabelText="Nombre" />
 
-                <controls:AccountDataFrames FieldText="{Binding UserEmail, Mode=TwoWay}"
+                <controls:AccountDataFrames
                     AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
                     ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
                     EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    FieldText="{Binding UserEmail, Mode=TwoWay}"
                     LabelText="Email" />
 
-                <controls:AccountDataFramesEditor FieldText="{Binding UserAddress, Mode=TwoWay}"
+                <controls:AccountDataFramesEditor
                     AcceptButtonPressedCommand="{Binding BindingContext.AcceptButtonPressedCommand, Source={x:Reference Root}}"
                     ControlCommandParameter="{Binding ., Source={x:Reference Root}}"
                     EditButtonPressedCommand="{Binding BindingContext.EditButtonPressedCommand, Source={x:Reference Root}}"
+                    FieldText="{Binding UserAddress, Mode=TwoWay}"
                     LabelText="Dirección" />
+
+                <Grid VerticalOptions="EndAndExpand">
+                    <BoxView
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="{StaticResource BackgroundDarkColor}"
+                        CornerRadius="35,35,0,0"
+                        HeightRequest="100"
+                        VerticalOptions="Center" />
+                    <Button
+                        Margin="20"
+                        BackgroundColor="#ff9966"
+                        Command="{Binding LogoutCommand}"
+                        Style="{StaticResource ButtonWithDarkBackgroundStyle}"
+                        Text="Cerrar sesión"
+                        VerticalOptions="EndAndExpand" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="20"
+                        Command="{Binding SaveProfileInfoCommand}"
+                        Style="{StaticResource ButtonWithDarkBackgroundStyle}"
+                        Text="Guardar cambios"
+                        VerticalOptions="EndAndExpand" />
+                </Grid>
             </StackLayout>
         </Grid>
     </Grid>

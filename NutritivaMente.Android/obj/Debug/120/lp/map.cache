@@ -1,5 +1,4 @@
 FormsViewGroup.dll
-NutritivaMente.dll
 Plugin.CloudFirestore.dll
 Plugin.GoogleClient.dll
 Prism.Forms.dll
@@ -172,3 +171,4 @@ firebasedatabasecollection-17.0.1.aar
 firebaseauthinterop-19.0.0.aar
 firebasefirestore-21.4.3.aar
 firebaseanalytics-20.0.1.aar
+NutritivaMente.dll

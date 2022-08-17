@@ -14,8 +14,8 @@ namespace NutritivaMente.Model
 
         public double PricePayed { get; set; }
 
-        public DateTime OrderDate = DateTime.Now ;
-
+        public DateTime OrderDate { get; set; }
+        
         public bool IsDelivered { get; set; }
     }
 }

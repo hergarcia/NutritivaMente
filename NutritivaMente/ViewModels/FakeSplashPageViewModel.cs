@@ -43,23 +43,23 @@ namespace NutritivaMente.ViewModels
                 {
                     var auth = googleService.GetGoogleUserInformation();
                     var user = await usersService.GetUserByEmail(auth.Email);
-                    Preferences.Set("LogedUser", JsonConvert.SerializeObject(user));
-                    await NavigationService.NavigateAsync($"/{nameof(MasterPageViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+                    Preferences.Set("LoggedUser", JsonConvert.SerializeObject(user));
+                    await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
                 }
                 else if (!string.IsNullOrEmpty(Preferences.Get("MyFirebaseRefreshToken", "")))
                 {
                     var auth = await authService.GetProfileInformationAndRefreshToken();
                     var user = await usersService.GetUserByEmail(auth.Email);
-                    Preferences.Set("LogedUser", JsonConvert.SerializeObject(user));
-                    await NavigationService.NavigateAsync($"/{nameof(MasterPageViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+                    Preferences.Set("LoggedUser", JsonConvert.SerializeObject(user));
+                    await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
                 }
             }
             else
             {
                 googleService.OnLogoutGoogle();
                 Preferences.Remove("MyFirebaseRefreshToken");
-                Preferences.Remove("LogedUser");
-                await NavigationService.NavigateAsync($"/{nameof(MasterPageViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
+                Preferences.Remove("LoggedUser");
+                await NavigationService.NavigateAsync($"/{nameof(RootMasterDetailViewModel)}/NavigationPage/{nameof(ProductPageViewModel)}");
             }
         }
     }

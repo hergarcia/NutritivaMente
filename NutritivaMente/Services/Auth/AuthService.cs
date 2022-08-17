@@ -68,6 +68,7 @@ namespace NutritivaMente.Services.Auth
         public void LogOutEmailAndPasswordUser()
         {
             Preferences.Remove("MyFirebaseRefreshToken");
+            Preferences.Remove("LoggedUser");
         }
 
         public async Task PasswordRecoveryMail(string email)

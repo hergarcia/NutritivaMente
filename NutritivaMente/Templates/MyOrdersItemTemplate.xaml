@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NutritivaMente.Templates.MyOrdersItemTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NutritivaMente.Controls"
+    xmlns:helpers="clr-namespace:NutritivaMente.Helpers"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+
+    <ContentView.Content>
+        <Frame
+            Margin="10"
+            Padding="15"
+            BackgroundColor="White"
+            CornerRadius="15"
+            HasShadow="False">
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="30">
+
+                <Label Text="{Binding OrderDate, StringFormat='{0:d MMMM yyyy,  h:mm tt }'}" VerticalTextAlignment="Center" />
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="End"
+                    TextColor="{StaticResource AccentColor}"
+                    VerticalTextAlignment="Center">
+                    <Label.Text>
+                        <Binding Path="IsDelivered">
+                            <Binding.Converter>
+                                <helpers:BoolToStringConverter FalseToString="En camino" TrueToString="Entregado" />
+                            </Binding.Converter>
+                        </Binding>
+                    </Label.Text>
+                </Label>
+
+
+                <Grid Grid.Row="1">
+
+                    <!--<CollectionView ItemsSource="{Binding CartData.CartItems}" VerticalOptions="Start">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="30" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>-->
+                    <StackLayout BindableLayout.ItemsSource="{Binding CartData.CartItems}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    ColumnDefinitions="100,*,*"
+                                    ColumnSpacing="20"
+                                    RowDefinitions="*,*,*,*"
+                                    RowSpacing="10">
+                                    <Frame
+                                        Grid.RowSpan="3"
+                                        Padding="0"
+                                        BorderColor="{StaticResource AccentColor}"
+                                        CornerRadius="15"
+                                        HasShadow="False"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image Aspect="Fill" Source="{Binding Product.Photo}" />
+                                    </Frame>
+                                    <Label Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontAttributes="Bold" Text="{Binding Product.Name}" />
+                                                <Span Text="{Binding SelectedPrice.Name, StringFormat='  ({0})'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <controls:AutoFitLabel
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        MaxLines="1"
+                                        Text="{Binding Product.Description}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontAttributes="Bold"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding SelectedPrice.Price, StringFormat='{0:C}'}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        FontAttributes="Bold"
+                                        HorizontalTextAlignment="End"
+                                        Text="{Binding Quantity, StringFormat='Cantidad: {0}'}" />
+
+                                    <BoxView
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        BackgroundColor="{StaticResource AccentColor}"
+                                        HeightRequest="0.5"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <!--</CollectionView.ItemTemplate>
+                    </CollectionView>-->
+                </Grid>
+
+
+                <StackLayout Grid.Row="2">
+                    <!--<Label Text="{Binding CartData.CartItems.Count, StringFormat='x{0} items'}" VerticalTextAlignment="Center" />-->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding PricePayed, StringFormat='{0:C}'}"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
+                <Button
+                    Grid.Row="2"
+                    BorderColor="{StaticResource AccentColor}"
+                    HorizontalOptions="End"
+                    Style="{StaticResource ButtonWithLightBackgroundStyle}"
+                    Text="Contacto"
+                    TranslationY="-10"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

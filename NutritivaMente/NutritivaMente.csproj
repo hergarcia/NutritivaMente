@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\MasterPageViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Fonts\FontAwesome\Font Awesome 6 Duotone-Solid-900.otf" />
     <None Remove="Resources\Fonts\FontAwesome\Font Awesome 6 Pro-Light-300.otf" />
     <None Remove="Resources\Fonts\FontAwesome\Font Awesome 6 Pro-Regular-400.otf" />
@@ -65,11 +69,14 @@
     <Compile Update="Controls\AccountDataFramesEditor.xaml.cs">
       <DependentUpon>AccountDataFramesEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Controls\LoginAndRegisterFieldsFrameEditor.xaml.cs">
+      <DependentUpon>LoginAndRegisterFieldsFrameEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Themes\DarkTheme.xaml.cs">
       <DependentUpon>DarkTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
+    <Compile Update="Views\RootMasterDetailPage.xaml.cs">
+      <DependentUpon>RootMasterDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\NavigationPages\NavigationBarMenuTemplatePage.xaml.cs">
       <DependentUpon>NavigationBarMenuTemplatePage.xaml</DependentUpon>
@@ -86,6 +93,9 @@
     <EmbeddedResource Update="Controls\BusyPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Controls\LoginAndRegisterFieldsFrame.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Controls\MasterMenuButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -93,6 +103,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Templates\IngredientsItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Templates\MyOrdersItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MyAccountPage.xaml">
@@ -116,9 +132,6 @@
     <EmbeddedResource Update="Views\FakeSplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\MyOrderdsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -129,9 +142,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductSelectedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SubscriptionPage.xaml">
